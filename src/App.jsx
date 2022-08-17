@@ -15,8 +15,7 @@ import Error from './assets/error.png';
 import Checkout from './components/Checkout';
 
 
-function App() {
-  const [items, setItems] = useState([]);  
+function App() { 
   const productList = useSelector((state) => state.product);
   const dispatch = useDispatch();
   
@@ -33,9 +32,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchProducts());
-    const item = localStorage.getItem('products');
-    setItems(JSON.parse(item));
-    console.log(items);
+    console.log(productList.products);
   }, [])
 
 
@@ -56,8 +53,7 @@ function App() {
         : null
         }
       {!productList.loading && productList.products.length ? (
-        console.log('Products fetched!'),
-        localStorage.setItem('products', JSON.stringify(productList.products))
+        console.log('Products fetched!')
         ): null
       }
     
@@ -85,7 +81,7 @@ function App() {
         />
         <Route 
           path='/:id'
-          element={<ProductDetails items={items}  />}
+          element={<ProductDetails items={productList.products}  />}
         />
         <Route 
           path='/cart' element={<Cart />}
