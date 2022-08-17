@@ -6,7 +6,7 @@ import { add } from '../features/cartitems/cartSlice';
 import { Link, useParams } from 'react-router-dom';
 
 
-const ProductDetails = ({ items }) => {
+const ProductDetails = ({ items, count, setCount }) => {
 
   //Dispatch actions to add items to cart
   const cartList = useSelector(state => state.cart);
@@ -31,6 +31,7 @@ const ProductDetails = ({ items }) => {
 
     //Add item to cart
     dispatch(add(item));
+    setCount(count + 1);
   }
 
   return (  

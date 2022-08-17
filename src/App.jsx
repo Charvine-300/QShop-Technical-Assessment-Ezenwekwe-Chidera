@@ -9,13 +9,14 @@ import Products from './components/Products';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
-import ScrollToTop from './components/ScrollToTop'
 import Loading from './assets/loading.png';
 import Error from './assets/error.png';
 import Checkout from './components/Checkout';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() { 
+  const [count, setCount] = useState(0);
   const productList = useSelector((state) => state.product);
   const dispatch = useDispatch();
   
@@ -57,7 +58,7 @@ function App() {
         ): null
       }
     
-      <Navbar />
+      <Navbar itemNo={count} />
       <Routes>
         <Route 
           path='/*' 
@@ -81,7 +82,10 @@ function App() {
         />
         <Route 
           path='/:id'
-          element={<ProductDetails items={productList.products}  />}
+          element={<ProductDetails 
+            count={count}
+            setCount={setCount}
+            items={productList.products}  />}
         />
         <Route 
           path='/cart' element={<Cart />}

@@ -42,6 +42,7 @@ const Cart = () => {
             <tr>
               <th>
                 <p 
+                  style={{'cursor': 'pointer'}}
                   onClick={() => {dispatch(remove(item))}} 
                   className="has-text-danger-dark has-text-left"> 
                   x 
@@ -87,6 +88,7 @@ const Cart = () => {
             <tr key={item.id}>
               <th> 
                 <p 
+                  style={{'cursor': 'pointer'}}
                   onClick={() => {dispatch(remove(item))}} 
                   className="has-text-danger-dark has-text-left"> 
                   x 

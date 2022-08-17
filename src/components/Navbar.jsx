@@ -17,7 +17,7 @@ export default class Navbar extends Component {
       {link: '/jewelery', text: 'Jewelery'},
       {link: '/men', text: 'Men\'s Clothing'},
       {link: '/women', text: 'Women\'s Clothing'},
-      {link: '/cart', text: 'Cart'},
+      {link: '/cart', text: `Cart(${this.props.itemNo})`},
     ],
     desktopMenu: [],
   };
@@ -34,7 +34,7 @@ export default class Navbar extends Component {
 
   componentDidMount() {
     //Filtering through menuItems to remove cart menu item for desktop view
-    const desktopList = this.state.menuItems.filter(item => item.text !== 'Cart');
+    const desktopList = this.state.menuItems.filter(item => item.link !== '/cart');
     this.setState({desktopMenu: desktopList});
   }
 
@@ -85,7 +85,10 @@ export default class Navbar extends Component {
             </div>
 
             <div className="navbar-end navbar-menu" id='go-cart'>
-              <Link to='/cart'> 
+              <Link to='/cart' className='float'> 
+                <div className="green-light">
+                  <p> {this.props.itemNo}  </p> 
+                </div>
                 <FontAwesomeIcon icon={faShoppingCart} size='2xl' />
               </Link>
             </div>
