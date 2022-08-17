@@ -35,6 +35,7 @@ function App() {
     dispatch(fetchProducts());
     const item = localStorage.getItem('products');
     setItems(JSON.parse(item));
+    console.log(items);
   }, [])
 
 
